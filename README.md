@@ -39,14 +39,14 @@ Tämä automaatio koostuu kahdesta eri Make-skenaariosta, jotka toimivat yhdess�
 ## Kuvakaappaukset
 
 #### 1. Make-skenaariot
-![Make Workflow](docs/make-workflow1.jpg)
-![Make Workflow](docs/make-workflow2.jpg)
+![Make Workflow](kuvat/make-workflow1.jpg)
+![Make Workflow](kuvat/make-workflow2.jpg)
 
 #### 2. AI Agentti
-![AI Agent](docs/AI-Agent.jpg)
+![AI Agent](kuvat/AI-Agent.jpg)
 
 #### 3. Google Calendar
-![Google Calendar](docs/Google-Calendar.jpg)
+![Google Calendar](kuvat/Google-Calendar.jpg)
 
 ## Kehitysideat
 
