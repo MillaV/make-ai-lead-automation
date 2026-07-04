@@ -14,6 +14,7 @@ Opin:
 - Hyödyntämään automaatiossa "haaroittimia"? (Routers) ja suodattimia, jotta automaatio toimii oikein (URL-osoitteen tarkastus)
 - Automaattista tiedonkeruuta, eli robotti käy lukemassa ja hakemassa tarvittavat tiedot kohdesivustolta puolestani (browse AI)
 - AI Agentin rakentaminen: tekoälyagentti osaa itsenäisesti lukea viestejä, käydä katsomassa kalenterista vapaat ajat ja lähettää sähköpostilla valmiin vastaus- ja tapaamisen varauslinkin.
+- Projekti osoitti, että modernit automaatio- ja AI-työkalut tarjoavat lähes rajattomasti mahdollisuuksia prosessien tehostamiseen. Koko kehityskaaren ajan on kuitenkin pidettävä kriittisesti mielessä se, minkälaisia käyttöoikeuksia eri järjestelmille annetaan ja miten datan turvallisuus varmistetaan.
 
 ## Teknologiat
 
@@ -48,6 +49,26 @@ Tämä automaatio koostuu kahdesta eri Make-skenaariosta, jotka toimivat yhdess�
 #### 3. Google Calendar
 ![Google Calendar](kuvat/Google-Calendar.jpg)
 
-## Kehitysideat
+## Tietoturva ja riskienhallinta (Security & Risk Management)
 
-* [ ] **Kaksisuuntainen viestintä:** Tällä hetkellä automaatio toimii vain yhteen suuntaan. Jatkokehityksenä voisi rakentaa seurannan (Webhook), joka reagoi, jos asiakas vastaa saamaansa sähköpostiin.
+> ⚠️ **Huomautus:** 
+> Tämä projekti on toteutettu käyttäen kuvitteellista yritystä ja testisähköposteja. Projektissa käytetyt tiedot eivät ole aitoja, joten esitellyt riskit eivät ole tässä harjoitustyössä oleellisia. Alla olevat huomiot ovat kuitenkin kriittisiä asioita, jotka on ehdottomasti huomioitava ja ratkaistava, jos vastaava järjestelmä otetaan käyttöön oikeassa yrityksessä.
+
+Tekoälyagentteihin ja automaatioketjuihin liittyy haavoittuvuuksia vastuullisuuden ja riskienhallinnan kannalta. Tässä projektissa tunnistettiin seuraavat kriittiset riskit ja niiden hallintakeinot:
+
+### 1. Virheellisen tiedon siirtyminen
+* **Riski:** Automaatio hakee tietoa Browse AI -robotilla asiakkaan antaman linkin perusteella. Jos ulkopuolisella sivustolla on vanhaa, virheellistä tai harhaista aineistoa, heikkolaatuinen data saastuttaa koko prosessin. Tekoälyagentti laatii vastauksen näiden väärien esitietojen pohjalta, mikä johtaa virheellisen sähköpostin lähettämiseen asiakkaalle.
+* **Ratkaisu:** Prosessia voisi muuttaa niin, että tekoälyagentti ei lähetä sähköpostia suoraan, vaan tallentaa viestin luonnokseksi Gmail-tilille. Ihminen tarkistaa ja hyväksyy viestin sisällön aina ennen sen virallista lähettämistä.
+
+### 2. Sääntöjen kiertäminen ja hallinnan menetys
+* **Riski:** Jos tekoälyagentin ohjeistusta ei ole rajattu riittävän tiukasti, agentti saattaa pyrkiä päätavoitteeseensa (kuten asiakkaan ystävälliseen palvelemiseen ja tapaamisen sopimiseen) keinoilla, jotka kiertävät organisaation sääntöjä tai vastuita. Agentti voi esimerkiksi luvata luvattomia alennuksia tai sopia tapaamisia väärille ajoille.
+* **Ratkaisu:** Agentin toimintavaltuudet on määriteltävä tiukasti järjestelmäohjeissa (esim. *"Älä koskaan ota kantaa hinnoitteluun tai lupaa aikatauluja, joita ei ole annettu suorissa alkutiedoissa"*).
+
+### 3. Laaja rajapintojen käyttö ja hyökkäyspinta (Expanded Attack Surface)
+* **Riski:** Automaatioketjussa on laajasti käytössä useita eri rajapintoja ja ulkoisia palveluita (Tally, Make, Google Sheets, Browse AI, OpenAI, Gmail). Useiden rajapintojen yli kulkevaa dataliikennettä on vaikea monitoroida, mikä laajentaa järjestelmän hyökkäyspintaa ja lisää tietoturvaloukkausten riskiä.
+* **Ratkaisu:** Integraatioiden hallinnassa on noudatettava **minimioikeuksien periaatetta**. Make-alustan liitoksille annetaan mahdollisimman tiukat ja rajatut käyttöoikeudet (esimerkiksi oikeus lukea ja kirjoittaa vain yhteen tiettyyn Google Sheets -taulukkoon koko Google Driven sijaan).
+
+### 4. Henkilötietojen käsittely
+* **Riski:** Koska yhteydenottolomakkeella kerätään henkilötietoja (nimi,puhelin,sähköposti), datan siirtäminen kolmannen osapuolen tekoälypalveluihin (kuten OpenAI) muodostaa tietosuojariskin.
+* **Ratkaisu:** Tuotantoympäristössä on varmistettava, että käytössä on tekoälypalvelun kaupallinen API- tai yritystili (Enterprise), joka takaa sopimuksellisesti, ettei asiakasdataa käytetä tekoälymallien kouluttamiseen.
+
