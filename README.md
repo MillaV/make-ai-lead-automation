@@ -14,7 +14,7 @@ Opin:
 - Hyödyntämään automaatiossa "haaroittimia"? (Routers) ja suodattimia, jotta automaatio toimii oikein (URL-osoitteen tarkastus)
 - Automaattista tiedonkeruuta, eli robotti käy lukemassa ja hakemassa tarvittavat tiedot kohdesivustolta puolestani (browse AI)
 - AI Agentin rakentaminen: tekoälyagentti osaa itsenäisesti lukea viestejä, käydä katsomassa kalenterista vapaat ajat ja lähettää sähköpostilla valmiin vastaus- ja tapaamisen varauslinkin.
-- Projekti osoitti, että modernit automaatio- ja AI-työkalut tarjoavat lähes rajattomasti mahdollisuuksia prosessien tehostamiseen. Koko kehityskaaren ajan on kuitenkin pidettävä kriittisesti mielessä se, minkälaisia käyttöoikeuksia eri järjestelmille annetaan ja miten datan turvallisuus varmistetaan.
+- Projekti havainnollisti, miten modernit automaatio- ja AI-työkalut mahdollistavat useiden eri järjestelmien yhdistämisen yhdeksi automatisoiduksi työnkuluksi. Samalla opin, että tuotantoympäristössä käyttöoikeuksien hallinta, tietoturva ja datan käsittely ovat keskeisiä suunnittelukohteita.
 
 ## Teknologiat
 
