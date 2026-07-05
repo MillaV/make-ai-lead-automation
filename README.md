@@ -57,15 +57,15 @@ Tämä automaatio koostuu kahdesta eri Make-skenaariosta, jotka toimivat yhdess�
 Tekoälyagentteihin ja automaatioketjuihin liittyy haavoittuvuuksia vastuullisuuden ja riskienhallinnan kannalta. Tässä projektissa tunnistettiin seuraavat kriittiset riskit ja niiden hallintakeinot:
 
 ### 1. Virheellisen tiedon siirtyminen
-* **Riski:** Automaatio hakee tietoa Browse AI -robotilla asiakkaan antaman linkin perusteella. Jos ulkopuolisella sivustolla on vanhaa, virheellistä tai harhaista aineistoa, heikkolaatuinen data saastuttaa koko prosessin. Tekoälyagentti laatii vastauksen näiden väärien esitietojen pohjalta, mikä johtaa virheellisen sähköpostin lähettämiseen asiakkaalle.
-* **Ratkaisu:** Prosessia voisi muuttaa niin, että tekoälyagentti ei lähetä sähköpostia suoraan, vaan tallentaa viestin luonnokseksi Gmail-tilille. Ihminen tarkistaa ja hyväksyy viestin sisällön aina ennen sen virallista lähettämistä.
+* **Riski:** Automaatio hakee tietoa Browse AI -robotilla asiakkaan antaman linkin perusteella. Jos ulkopuolisella sivustolla on vanhaa, virheellistä aineistoa, heikkolaatuinen data "saastuttaa" koko prosessin. Tekoälyagentti laatii vastauksen näiden väärien esitietojen pohjalta, mikä johtaa virheellisen sähköpostin lähettämiseen asiakkaalle.
+* **Ratkaisu:** Prosessia voisi muuttaa niin, että tekoälyagentti ei lähetä sähköpostia suoraan, vaan tallentaa viestin luonnokseksi Gmail-tilille. Ihminen tarkistaa ja hyväksyy viestin sisällön aina ennen sen lähettämistä.
 
 ### 2. Sääntöjen kiertäminen ja hallinnan menetys
 * **Riski:** Jos tekoälyagentin ohjeistusta ei ole rajattu riittävän tiukasti, agentti saattaa pyrkiä päätavoitteeseensa (kuten asiakkaan ystävälliseen palvelemiseen ja tapaamisen sopimiseen) keinoilla, jotka kiertävät organisaation sääntöjä tai vastuita. Agentti voi esimerkiksi luvata luvattomia alennuksia tai sopia tapaamisia väärille ajoille.
 * **Ratkaisu:** Agentin toimintavaltuudet on määriteltävä tiukasti järjestelmäohjeissa (esim. *"Älä koskaan ota kantaa hinnoitteluun tai lupaa aikatauluja, joita ei ole annettu suorissa alkutiedoissa"*).
 
 ### 3. Laaja rajapintojen käyttö ja hyökkäyspinta (Expanded Attack Surface)
-* **Riski:** Automaatioketjussa on laajasti käytössä useita eri rajapintoja ja ulkoisia palveluita (Tally, Make, Google Sheets, Browse AI, OpenAI, Gmail). Useiden rajapintojen yli kulkevaa dataliikennettä on vaikea monitoroida, mikä laajentaa järjestelmän hyökkäyspintaa ja lisää tietoturvaloukkausten riskiä.
+* **Riski:** Automaatiossa on laajasti käytössä useita eri rajapintoja ja ulkoisia palveluita (Tally, Make, Google Sheets, Browse AI, OpenAI, Gmail). Useiden rajapintojen yli kulkevaa dataliikennettä on vaikea monitoroida, mikä laajentaa järjestelmän hyökkäyspintaa ja lisää tietoturvaloukkausten riskiä.
 * **Ratkaisu:** Integraatioiden hallinnassa on noudatettava **minimioikeuksien periaatetta**. Make-alustan liitoksille annetaan mahdollisimman tiukat ja rajatut käyttöoikeudet (esimerkiksi oikeus lukea ja kirjoittaa vain yhteen tiettyyn Google Sheets -taulukkoon koko Google Driven sijaan).
 
 ### 4. Henkilötietojen käsittely
